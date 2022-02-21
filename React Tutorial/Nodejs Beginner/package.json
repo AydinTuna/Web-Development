@@ -1,0 +1,21 @@
+{
+  "name": "learning-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index"
+  },
+  "keywords": [
+    "react",
+    "nodejs"
+  ],
+  "author": "Bahadır Tuna Aydın",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.26.0",
+    "node-fetch": "^3.2.0",
+    "slugify": "^1.6.5"
+  }
+}

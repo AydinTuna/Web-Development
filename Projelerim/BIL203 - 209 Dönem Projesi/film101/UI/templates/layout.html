@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.7.1/font/bootstrap-icons.css"
+        integrity="sha512-V/16/YNWHyRzk7KwjMaRnwztuPcKdZhOA/DQjTmfzOdQ86B/ajDXFL3alrxyr0fBYROOk4PU26Bm7nmHUB8nEg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/movie.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/backTopButton.css') }}">
+    {% block head %}
+    {% endblock %}
+</head>
+
+<body>
+    <!-- Back top -->
+    <a id="button"></a>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md blue" id="navbar">
+        <div class="container-fluid d-flex">
+            <a href="/home">
+                <img class="rounded navbar-brand" src="{{ url_for('static', filename='images/YönetmenKoltuğu.png') }}"
+                    alt="Film101">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span><i class="fas fa-bars mx-3"></i></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0 ms-3 ms-md-0">
+                    <li class="nav-item me-3">
+                        <a class="nav-link btn fourth px-3 ms-0" aria-current="page" href="/movie/id/{{ rm.info._id }}">Rastgele Film
+                            <br>
+                            Getir</a>
+                    </li>
+                    <li class="nav-item me-3">
+                        <a class="nav-link btn fourth px-3 ms-0" aria-current="page" href="/movie/genres">Modunu
+                            <br>
+                            Seç</a>
+                    </li>
+                    <li class="nav-item me-3">
+                        <a class="btn fourth px-3 ms-0" data-bs-toggle="modal" data-bs-target="#modalTavsiye"
+                            role="button">Tavsiyeni <br>
+                            gönder</a>
+
+                        <!-- Tavsiye -->
+                        <div class="modal fade" id="modalTavsiye" tabindex="-1" aria-labelledby="modalTavsiyeLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="tavsiye">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <h2 class="tavsiye-header">FİLMİNİ TAVSİYE ET</h2>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close" id="close"></button>
+                                        </div>
+                                        <form class="tavsiye-container mb-3" method="POST">
+                                            <p><input type="text" placeholder="Film Adı" name="mname" id="filmAdi" 
+                                                required="required">
+                                            </p>
+
+                                            <p><input type="number" placeholder="Film Yılı" name="myear" required="required"
+                                                    id="filmYili"></p>
+
+                                            <!-- <div class="form-text paraTitle" id="err"></div> -->
+
+                                            <p><input type="submit" value="Gönder" id="btnFilmTavsiye"></p>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- İletişim -->
+                    <div class="modal fade" id="modalIletisimeGec" tabindex="-1"
+                        aria-labelledby="modalIletisimeGecLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="tavsiye">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <h2 class="tavsiye-header">İLETİŞİM</h2>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close" id="close"></button>
+                                    </div>
+                                    <div class="tavsiye-container text-center">
+                                        <div class="d-flex justify-content-center">
+                                            <h1 class="title my-1 bgOrange">MERHABA</h1>
+                                        </div>
+                                        <p class="paraTitle"><span class="bgOrange">Web sitemizi</span> beğendin mi?</p>
+                                        <p class="paraTitle">Bizimle <span class="bgOrange">işbirliği</span> mi yapmak
+                                            istiyorsun?</p>
+                                        <p class="paraTitle">İşte bize <span class="bgOrange">ulaşabileceğin</span>
+                                            kanallar:</p>
+                                        <hr class="style-six">
+                                        <div class="row">
+                                            <a class="mail" href="mailto:aydinbahadirtuna@gmail.com">
+                                                <span style="font-weight: 800;">front-end</span>:
+                                                aydinbahadirtuna@gmail.com</a>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <a
+                                                    href="https://www.linkedin.com/in/bahad%C4%B1r-tuna-ayd%C4%B1n-89689a1bb/"><i
+                                                        class="fab fa-linkedin fa-2x first-linkedin shadow"></i></a>
+                                            </div>
+                                            <div class="col">
+                                                <a href="https://github.com/AydinTuna"><i
+                                                        class="fab fa-github-square fa-2x first-gitHub shadow"></i></a>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <a class="mail" href="mailto:ahmetertugrulkaya@gmail.com">
+                                                <span style="font-weight: 800;">back-end</span>:
+                                                ahmetertugrulkaya@gmail.com</a>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <a href="http://linkedin.com/in/ahmet-ertugrul-kaya"><i
+                                                        class="fab fa-linkedin fa-2x first-linkedin shadow"></i></a>
+                                            </div>
+                                            <div class="col">
+                                                <a href="https://github.com/qulad"><i
+                                                        class="fab fa-github-square fa-2x first-gitHub shadow"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Giriş -->
+                    <div class="modal fade" id="modalGiris" tabindex="-1" aria-labelledby="modalGirisLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="tavsiye">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <h2 class="tavsiye-header">GİRİŞ YAP</h2>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close" id="close"></button>
+                                    </div>
+                                    <form class="tavsiye-container mb-3" method="POST">
+                                        <p><input type="email" placeholder="email" name="lemail" id="girisEmail" required="required">
+                                        </p>
+
+                                        <p><input type="password" placeholder="şifre" name="lpassword"
+                                            id="girisSifre" required="required">
+                                        </p>
+
+                                        <p><input type="submit" value="Giriş Yap" id="giris"></p>
+                                        <p class="form-text">Kayıtlı değilseniz <a data-bs-target="#modalKayit"
+                                                data-bs-toggle="modal" class="text-dark kayit">kayıt</a> olun.</p>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kayıt Ol -->
+                    <div class="modal fade" id="modalKayit" tabindex="-1" aria-labelledby="modalKayitLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="tavsiye">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <h2 class="tavsiye-header">KAYIT OL</h2>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close" id="close"></button>
+                                    </div>
+                                    <form class="tavsiye-container mb-3" method="POST">
+                                        <p><input type="text" placeholder="kullanıcı adı" name="sname"
+                                            id="kullaniciAdi" required="required">
+                                        </p>
+
+                                        <p><input type="email" placeholder="email" name="semail" id="kayitEmail" required="required">
+                                        </p>
+
+                                        <p><input type="password" placeholder="şifre" name="spword"
+                                            id="kayitSifre" required="required">
+                                        </p>
+
+                                        <p><input type="password" placeholder="şifreyi tekrar giriniz" name="spword2"
+                                            id="kayitSifreTekrar" required="required">
+                                        </p>
+
+                                        <p><input type="submit" value="Kayıt Ol" id="kayit"></p>
+                                        <p class="form-text">Kayıtlıysanız <a class="text-dark kayit"
+                                                data-bs-toggle="modal" data-bs-target="#modalGiris">giriş</a> yapın.
+                                        </p>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <li class="nav-item dropdown me-3">
+                        <a class="nav-link btn fourth dropdown-toggle px-3 ms-0" href="#" id="navbarDropdown"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Profil &
+                            <br>
+                            İletişim
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="btn fourth dropdown-item" data-bs-toggle="modal"
+                                    data-bs-target="#modalIletisimeGec">İletişime Geç</a>
+                            </li>
+                            {% if not current_user.is_authenticated %}
+                            <li><a class="btn first-green dropdown-item" data-bs-toggle="modal"
+                                    data-bs-target="#modalGiris">Giriş Yap</a></li>
+                            <li><a class="btn first-orange dropdown-item" data-bs-toggle="modal"
+                                    data-bs-target="#modalKayit">Kayıt Ol</a></li>
+                            {% else %}
+                            <li><a class="btn fourth dropdown-item" href="/user/id/{{ current_user._id }}">Profil</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="btn first-red dropdown-item" href="/logout">Çıkış</a></li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex mx-3" action="/search/">
+                    <input class="form-control me-2" type="search" placeholder="Arama yap" aria-label="Search"
+                        name="search">
+                    <button class="btn fourth me-md-3" type="submit"><span><i class="bi bi-search"></i></span></button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="notification">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    {% block body %}
+    {% endblock %}
+
+    <!-- Footer -->
+    <footer class="blue mt-3 overflow-hidden">
+        <div class="row">
+            <div class="col-12 col-md-4 px-5">
+                <div class="d-flex justify-content-center">
+                    <img class="rounded" src="{{ url_for('static', filename='images/YönetmenKoltuğu.png') }}"
+                        alt="Film101">
+                </div>
+                <div class="d-flex justify-content-around px-5">
+                    <i class="fab fa-linkedin fa-2x first-linkedin shadow pb-3 shadow-none"></i>
+                    <i class="fab fa-github-square fa-2x first-gitHub shadow pb-3 shadow-none"></i>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 pt-4 px-5">
+                <div class="justify-content-center">
+                    <div class="text-start">
+                        <p class="description-footer"><a href="/movie/genres">En Sevilen Modlar</a></p>
+                    </div>
+                    <hr>
+                    <div class="text-center">
+                        <ul class="description-footer-paraf text-start">
+                            <li class="mt-1"><a href="/movie/genres/aksiyon">Aksiyon</a></li>
+                            <li class="mt-1"><a href="/movie/genres/drama">Drama</a></li>
+                            <li class="mt-1"><a href="/movie/genres/bilim-kurgu">Bilim-Kurgu</a></li>
+                            <li class="mt-1"><a href="/movie/genres/fantezi">Fantezi</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 pt-4 px-5">
+                <div class="justify-content-center text-start">
+                    <p class="description-footer"><a href="#navbar">Menüler</a></p>
+                </div>
+                <hr>
+                <div class="text-center">
+                    <ul class="description-footer-paraf text-start">
+                        <li class="mt-1"><a href="/movie/id/{{ rm.info._id }}">Rastgele Film Getir</a></li>
+                        <li class="mt-1"><a href="/movie/genres">Modlar</a></li>
+                        <li class="mt-1"><a data-bs-toggle="modal" data-bs-target="#modalTavsiye"
+                                id="footerTavsiye">Tavsiyeni Gönder</a>
+                        </li>
+                        <li class="mt-1"><a href="#navbar">Profil &
+                                İletişim</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='javascript/app.js') }}"></script>
+    <script src="{{ url_for('static', filename='javascript/backTopButton.js') }}"></script>
+</body>
+
+</html>

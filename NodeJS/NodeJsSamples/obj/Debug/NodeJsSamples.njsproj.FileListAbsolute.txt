@@ -1,0 +1,3 @@
+C:\Users\okan.ozturkmenoglu\Desktop\BİL 209 - Web Tabanlı Programlamaya Giriş\Hafta 8 - NodeJs\NodeJsSamples\NodeJsSamples\obj\Debug\NodeJsSamples.njsproj.AssemblyReference.cache
+C:\Users\okan.ozturkmenoglu\Desktop\BİL 209 - Web Tabanlı Programlamaya Giriş\Hafta 8 - NodeJs\NodeJsSamples\NodeJsSamples\obj\Debug\NodeJsSamples.njsproj.CoreCompileInputs.cache
+C:\Users\okan.ozturkmenoglu\Desktop\BİL 209 - Web Tabanlı Programlamaya Giriş\Hafta 8 - NodeJs\NodeJsSamples\NodeJsSamples\bin\Microsoft.NodejsTools.WebRole.dll

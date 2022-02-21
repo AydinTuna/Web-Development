@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}Giriş Yap{% endblock %}
+
+{% block body %}
+
+<!-- <form method="POST">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Eposta</label>
+        <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="eposta">
+        <small id="emailHelp" class="form-text text-muted">e-posta adresini kimse ile paylaşmayacağız</small>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Şifre</label>
+        <input type="password" class="form-control" name="password" placeholder="şifre">
+    </div>
+    <button type="submit" class="btn btn-primary">Giriş yap</button>
+</form> -->
+
+<div class="container p-5">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <form method="POST">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Eposta</label>
+                    <input type="email" class="form-control" name="email" aria-describedby="emailHelp"
+                        placeholder="eposta">
+                    <small id="emailHelp" class="form-text text-muted">e-posta adresini kimse ile
+                        paylaşmayacağız</small>
+                </div>
+                <div class="form-group mt-3">
+                    <label for="exampleInputPassword1">Şifre</label>
+                    <input type="password" class="form-control" name="password" placeholder="şifre">
+                </div>
+                <button type="submit" class="btn first-orange mt-3" style="margin-left: 0px;">Giriş yap</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

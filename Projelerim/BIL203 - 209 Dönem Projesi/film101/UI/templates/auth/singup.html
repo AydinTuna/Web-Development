@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block title %}Giriş Yap{% endblock %}
+
+{% block body %}
+
+<!-- <form method="POST">
+    <div class="form-group">
+        <label for="exampleInputName1">Name</label>
+        <input type="text" class="form-control" name="name" placeholder="Name">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Eposta</label>
+        <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="eposta">
+        <small id="emailHelp" class="form-text text-muted">e-posta adresini kimse ile paylaşmayacağız</small>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Şifre</label>
+        <input type="password" class="form-control" name="password" placeholder="şifre">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Şifre</label>
+        <input type="password" class="form-control" name="password2" placeholder="tekrar şifre">
+    </div>
+    <button type="submit" class="btn btn-primary">Kayıt ol</button>
+</form> -->
+
+<div class="container p-5">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <form method="POST">
+                <div class="form-group">
+                    <label for="exampleInputName1">İsim</label>
+                    <input type="text" class="form-control" name="name" placeholder="isim soyisim">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">E-posta</label>
+                    <input type="email" class="form-control" name="email" aria-describedby="emailHelp"
+                        placeholder="example@example.com">
+                    <small id="emailHelp" class="form-text text-muted">E-postanı kimse ile paylaşmayız.</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Şifre</label>
+                    <input type="password" class="form-control" name="password" placeholder="şifre">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword2">Şifre Tekrar</label>
+                    <input type="password" class="form-control" name="password2" placeholder="şifre">
+                </div>
+                <button type="submit" class="btn btn-primary mt-3" style="margin-left: 0px;">Kayıt Ol</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

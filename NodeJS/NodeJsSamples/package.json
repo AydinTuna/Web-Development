@@ -1,0 +1,13 @@
+{
+  "name": "node-js-samples",
+  "version": "0.0.0",
+  "description": "NodeJsSamples",
+  "main": "server2.js",
+  "author": {
+    "name": ""
+  },
+  "dependencies": {
+    "formidable": "^2.0.1",
+    "upper-case": "^2.0.2"
+  }
+}

@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}Arama Sonuçları{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='CSS/card.css') }}">
+{% endblock %}
+
+{% block body %}
+{% if movies %}
+<section class="p5">
+  <div class="movies">
+    <main class="page-content">
+      {% for movie in movies %}
+      {% if movie is none %}
+        <section class="p5">
+          <div class="movies">
+              <main class="page-content">
+                  <h1>GÖSTERİLECEK FİLM BULUNAMADI!!</h1>
+              </main>
+          </div>
+        </section>
+      {% else %}
+        <div class="card" style="background-image: url('{{ movie.info.poster }}'); background-size: cover">
+          <div class="content">
+            <h2 class="title">{{ movie.info.title }}</h2>
+            <p class="copy">Lorem ipsum dolor sit amet.</p>
+            <form action="/movie/id/{{ movie.info._id }}">
+              <button class="btn-card" type="submit">İçeriği gör</button>
+            </form>
+          </div>
+        </div>      
+      {% endif %}
+      {% endfor %}
+    </main>
+  </div>
+</section>
+{% else %}
+{% endif %}
+{% endblock %}
