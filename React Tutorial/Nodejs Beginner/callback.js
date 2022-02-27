@@ -19,21 +19,7 @@
 import fetch from "node-fetch";
 import axios from "axios";
 
-fetch("https://jsonplaceholder.typicode.com/users")
-    .then((data) => data.json())
-    .then((users) => {
-        console.log("Users Yüklendi", users);
-
-        fetch("https://jsonplaceholder.typicode.com/posts/1")
-            .then((data) => data.json())
-            .then((post) => {
-                console.log("Post 1 Yüklendi", post);
-
-                fetch("https://jsonplaceholder.typicode.com/posts/2")
-                    .then((data) => data.json())
-                    .then((data) => console.log("Post 2 Yüklendi", data));
-        });
-    });
+//  
 
 /*
     Fetch işlemlerini belli bir sırada gerçekleştirmek için fetchleri art arda yazdık. Karmaşık olmasını isteseydik her fetchi ayrı
@@ -97,4 +83,49 @@ yapısı kullanılabilir. */
 
 
 //  P R O M I S E  \\
+
+// With Fetch
+// const getUsers = () => {
+//     return new Promise(async (resolve,reject) => {
+//         await fetch("https://jsonplaceholder.typicode.com/users")
+//         .then(response => response.json())
+//         .then(data => resolve(data))
+//         .catch(err => reject(err));
+//     });
+// }
+
+// With Axios
+const getUsers = () => {
+    return new Promise(async (resolve,reject) => {
+        const response = await axios("https://jsonplaceholder.typicode.com/users");
+        // reject("Hata1");
+        resolve(response.data);
+    });
+}
+
+const getPost = (post_id) => {
+    return new Promise(async (resolve,reject) => {
+        const { data } = await axios("https://jsonplaceholder.typicode.com/posts/" + post_id);
+        // reject("Hata2");
+        resolve(data);
+    });
+}
+
+// (async () => {
+//     try {
+//         const users = await getUsers();
+//         const post = await getPost(1);
+    
+//         console.log(users);
+//         console.log(post);
+//     } catch (error) {
+//         console.log(error);
+//     }
+
+// })();
+
+// Bütün Promiseleri yazdırma
+Promise.all([getUsers(), getPost(1)])
+.then(console.log)
+.catch(console.log);
 
