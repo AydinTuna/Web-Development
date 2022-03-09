@@ -1,11 +1,29 @@
 import './App.css';
 // import React from 'react'; React fonks kullanılmayacaksa componentlerde react import etmeye gerek yoktur
-import Header from './components/Header';
+// import Header from './components/Header';
 import User from './components/User';
 
 // const name = "Bahadır Tuna";
 // const surName = "Aydın";
 // const isLoggedIn = false;
+const friends = [
+  {
+    id: 1,
+    name: "Ahmet"
+  },
+  {
+    id: 2,
+    name: "Tayfun"
+  },
+  {
+    id: 3,
+    name: "Gökhan"
+  },
+  {
+    id: 4,
+    name: "Ayşe"
+  }
+];
 
 function App() {
   // return React.createElement("div", null, "Hello");
@@ -33,7 +51,8 @@ function App() {
     // </>
 
     <>
-      <User name={"Bahadır Tuna"} surname={"Aydın"} isLoggedIn={false} age={22}/>
+      <User name={"Bahadır Tuna"} surname={"Aydın"} isLoggedIn={false} age={22} 
+      friends={friends}/>
     </>
   );
 }
