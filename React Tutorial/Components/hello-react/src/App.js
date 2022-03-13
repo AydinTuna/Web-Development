@@ -51,7 +51,7 @@ function App() {
     // </>
 
     <>
-      <User name={"Bahadır Tuna"} surname={"Aydın"} isLoggedIn={false} age={22} 
+      <User name={"Bahadır Tuna"} surname={"Aydın"} isLoggedIn={true} age={22} 
       friends={friends}/>
     </>
   );
