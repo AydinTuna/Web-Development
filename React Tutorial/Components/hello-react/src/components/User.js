@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 function User({name, surname, age, isLoggedIn, friends}) {
     // console.log(props);     // Object { name: "Bahadır" }
     // console.log(props.name);    // Bahadır
@@ -20,8 +22,9 @@ function User({name, surname, age, isLoggedIn, friends}) {
             {friends.map((friend) => (
                 <div key={friend.id}>{friend.name}</div>
             ))}
-        </>
-    )
+        </>   
+    );
 }
+
 
 export default User;
