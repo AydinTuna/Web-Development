@@ -45,16 +45,21 @@ function App() {
 
     //   {/* <h1>{isLoggedIn && `Merhaba benim Adım ${name} ve soyadım ${surName}`}</h1>
     //   {!isLoggedIn && "Giriş yapmadınız."} */}
-    //   <h1>{isLoggedIn 
-    //     ? `Merhaba benim Adım ${name} ve soyadım ${surName}` 
+    //   <h1>{isLoggedIn
+    //     ? `Merhaba benim Adım ${name} ve soyadım ${surName}`
     //     : "Giriş yapmadınız."}</h1>
     // </>
 
     <>
-      <User name={"Bahadır Tuna"} surname={"Aydın"} isLoggedIn={false} age={22} 
-      friends={friends}/>
+      <User 
+      // name={"Bahadır Tuna"} 
+      surname={"Aydın"} 
+      // isLoggedIn={true}   // Default olarak false hale getirdim
+      age={"22"}
+      friends={friends} 
+      address={{street: "Çınar",zip: 168}}/>
     </>
   );
 }
 
-export default App; 
+export default App;
