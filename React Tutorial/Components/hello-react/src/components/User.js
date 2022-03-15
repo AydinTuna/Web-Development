@@ -49,6 +49,7 @@ User.propTypes = {
 
 User.defaultProps = {
     name: "İsimsiz",
+    surname: "İsimsiz",
     isLoggedIn: false,
 }
 
