@@ -10,6 +10,7 @@ function User({name, surname, age, isLoggedIn, friends, address}) {
     }
     return (
         <>
+        
             <h1>
                 {
                     `${name} ${surname}, ${age}`

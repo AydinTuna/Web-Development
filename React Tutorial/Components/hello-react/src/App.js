@@ -51,6 +51,7 @@ function App() {
     // </>
 
     <>
+
       <User 
       // name={"Bahadır Tuna"} 
       surname={"Aydın"} 
@@ -58,6 +59,8 @@ function App() {
       age={"22"}
       friends={friends} 
       address={{street: "Çınar",zip: 168}}/>
+      <User name={"Bahadır Tuna"} surname={"Aydın"} isLoggedIn={true} age={22} 
+      friends={friends} />
     </>
   );
 }
