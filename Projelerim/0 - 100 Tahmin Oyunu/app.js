@@ -6,6 +6,7 @@ const inp2 = document.getElementById("2.kisi");
 
 if (btnPc.value === "pc") {
     
+    
 }
 
 const goruntule = (e) => {
